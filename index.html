@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="ChordDependencyChart.js" charset="utf-8"></script>
+
+<body>
+    <svg style="width: 1000px; height:1000px"></svg>
+</body>
+<script>
+    const matrix = [
+        [1, 41, 0, 0, 8, 4, 2, 0, 5, 5],
+        [6, 0, 1, 1, 1, 0, 4, 1, 0, 1],
+        [1, 12, 0, 0, 3, 0, 1, 0, 1, 3],
+        [0, 11, 3, 0, 4, 1, 1, 0, 0, 2],
+        [1, 1, 0, 0, 1, 0, 0, 2, 2, 0],
+        [4, 0, 4, 0, 0, 0, 0, 1, 0, 1],
+        [0, 6, 0, 0, 1, 1, 0, 0, 1, 0],
+        [1, 4, 2, 0, 0, 1, 0, 0, 0, 0],
+        [1, 0, 1, 0, 0, 2, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 3, 0, 0, 1, 0],
+    ]
+
+    const nameByIndex = {
+        0: 332,
+        1: 229,
+        2: 333,
+        3: 343,
+        4: 313,
+        5: 357,
+        6: 344,
+        7: 318,
+        8: 312,
+        9: 329
+    };
+    const indexByName = {
+        332: 0,
+        229: 1,
+        333: 2,
+        343: 3,
+        313: 4,
+        357: 5,
+        344: 6,
+        318: 7,
+        312: 8,
+        329: 9
+    };
+
+    let config = {
+        matrix: matrix,
+        nameByIndex: nameByIndex,
+        indexByName: indexByName,
+        width: 1000,
+        height: 1000
+    }
+    let chart = new Chart(d3, config);
+    let svg = chart.draw();
+    chart.saveAsPng(svg, name = "local");
+</script>
+
+</html>
